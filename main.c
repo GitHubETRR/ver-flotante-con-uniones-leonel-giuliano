@@ -27,14 +27,21 @@ typedef union {
 }data_t;
 
 void ingresarDato(data_t *);
-void menu(data_t);
+char datoSigno(data_t);
 
 int main(void) {
     data_t dataFloat;
 
     printf("Bienvenido al programa, se encarga de");
 
-    menu(dataFloat);
+    ingresarDato(&dataFloat);
+    char signText = datoSigno(dataFloat);
+    printf("El numero se multiplica por 10^%i en notacion cientifica\n", dataFloat.EXPO);
+    printf("La matriz del numero es: %i", dataFloat.mantiza);
+    printf("El numero completo es: %c%i*10^%i",
+        signText,
+        dataFloat.mantiza,
+        dataFloat.EXPO);
 
     return 0;
 }
@@ -44,49 +51,18 @@ void ingresarDato(data_t *dataFloat) {
     scanf("%f", &dataFloat->varF);
 }
 
-void menu(data_t dataFloat) {
-    unsigned char option;
+char datoSigno(data_t dataFloat) {
+    char signText = ' ';
 
-    printf("Inserte una opcion: ");
-    do {
-        scanf("%c", &option);
+    printf("El signo del numero es ");
 
-        if (option > MENU_END) printf("Por favor, inserte una opcion valida: ");
-    } while (option > MENU_END);
-
-    while (option != MENU_END) {
-        switch (option) {
-            case MENU_INSERT:
-                ingresarDato(&dataFloat);
-                break;
-
-            case MENU_SIGN:
-                printf("El signo del numero insertado es ");
-
-                if(dataFloat.signo) printf("negativo");
-                else printf("positivo");
-
-                break;
-
-            case MENU_EXPO:
-                printf("El numero en notacion cinetifica se multiplica por 10^%i",
-                    dataFloat.EXPO);
-                break;
-
-            case MENU_MANT:
-                printf("La mantiza del numero es: %i", dataFloat.mantiza);
-                break;
-
-            case MENU_NUM:
-                unsigned char signoText = (dataFloat.signo) '-' : '';
-
-                printf("El numero es: %c%i*10^%i",
-                    signoText,
-                    dataFloat.mantiza,
-                    dataFloat.EXPO);
-                break;
-        }
+    if (dataFloat.signo) {
+        printf("negativo");
+        signText = '-';
     }
+    else printf("positivo");
 
-    printf("Hasta luego!");
+    printf("\n");
+
+    return signText;
 }
