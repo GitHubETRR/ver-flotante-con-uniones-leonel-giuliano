@@ -27,22 +27,22 @@ typedef union {
 }data_t;
 
 void ingresarDato(data_t *);
-char datoSigno(data_t);
+void datoSigno(data_t);
 
 int main(void) {
     data_t dataFloat;
 
-    printf("Bienvenido al programa, se encarga de");
+    printf("Bienvenido al programa\n\n");
 
     ingresarDato(&dataFloat);
-    char signText = datoSigno(dataFloat);
-    printf("El numero se multiplica por 10^%i en notacion cientifica\n", dataFloat.EXPO);
-    printf("La matriz del numero es: %i", dataFloat.mantiza);
-    printf("El numero completo es: %c%i*10^%i",
-        signText,
-        dataFloat.mantiza,
-        dataFloat.EXPO);
-
+    datoSigno(dataFloat);
+    printf("El numero se multiplica por 10^%u en notacion cientifica\n", dataFloat.EXPO);
+    printf("La matriz del numero es: %X\n", dataFloat.mantiza);
+    printf("El numero completo es %X%X%X\n",
+        dataFloat.signo,
+        dataFloat.exponente,
+        dataFloat.mantiza);
+    
     return 0;
 }
 
@@ -51,18 +51,11 @@ void ingresarDato(data_t *dataFloat) {
     scanf("%f", &dataFloat->varF);
 }
 
-char datoSigno(data_t dataFloat) {
-    char signText = ' ';
-
+void datoSigno(data_t dataFloat) {
     printf("El signo del numero es ");
 
-    if (dataFloat.signo) {
-        printf("negativo");
-        signText = '-';
-    }
+    if (dataFloat.signo) printf("negativo");
     else printf("positivo");
 
     printf("\n");
-
-    return signText;
 }
