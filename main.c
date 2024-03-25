@@ -32,7 +32,7 @@ void datoSigno(data_t);
 int main(void) {
     data_t dataFloat;
 
-    printf("Bienvenido al programa\n\n");
+    printf("Bienvenido%c al programa\n\n", aT);
 
     ingresarDato(&dataFloat);
     datoSigno(dataFloat);

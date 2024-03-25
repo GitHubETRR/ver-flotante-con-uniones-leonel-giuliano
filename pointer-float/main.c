@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../../ascii/ascii.h"
 
 #define DESPLAZAMIENTO sizeof(varF) / sizeof(*pfloat) - 1
 /*
@@ -14,7 +15,7 @@ int main(void) {
     pfloat += DESPLAZAMIENTO;
 
     ingresarDato(&varF);
-    printf("El numero en hexadecimal es: 0x");
+    printf("El n%cmero en hexadecimal es: 0x", uACENTO);
 
     for (unsigned char i = 0; i <= DESPLAZAMIENTO; i++) {
         printf("%X", *pfloat--);
