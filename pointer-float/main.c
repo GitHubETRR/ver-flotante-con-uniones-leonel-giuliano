@@ -14,6 +14,9 @@ int main(void) {
     unsigned char *pfloat = &varF;
     pfloat += DESPLAZAMIENTO;
 
+    printf("Bienvenido al programa\n");
+    printf("Este programa se encarga de anotar individualmente cada byte del float que inserte\n");
+
     ingresarDato(&varF);
     printf("El n%cmero en hexadecimal es: 0x", uACENTO);
 

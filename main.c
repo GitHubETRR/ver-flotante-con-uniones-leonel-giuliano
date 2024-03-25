@@ -1,6 +1,7 @@
 // Printear partes del flotante y pedir que sea insertado
 
 #include <stdio.h>
+#include "../ascii/ascii.h"
 
 #define signo format.sign
 #define exponente format.exp
@@ -32,13 +33,22 @@ void datoSigno(data_t);
 int main(void) {
     data_t dataFloat;
 
-    printf("Bienvenido%c al programa\n\n", aT);
+    printf("Bienvenido al programa\n\n");
 
     ingresarDato(&dataFloat);
     datoSigno(dataFloat);
-    printf("El numero se multiplica por 10^%u en notacion cientifica\n", dataFloat.EXPO);
-    printf("La matriz del numero es: %X\n", dataFloat.mantiza);
-    printf("El numero completo es %X%X%X\n",
+    printf("El n%cmero se multiplica por 10^%u en notaci%cn cient%cfica\n",
+        uACENTO,
+        dataFloat.EXPO,
+        oACENTO,
+        iACENTO);
+
+    printf("La matriz del n%cmero es: %X\n",
+        uACENTO,
+        dataFloat.mantiza);
+
+    printf("El n%cmero completo es 0x%X%X%X\n",
+        uACENTO,
         dataFloat.signo,
         dataFloat.exponente,
         dataFloat.mantiza);
@@ -52,7 +62,7 @@ void ingresarDato(data_t *dataFloat) {
 }
 
 void datoSigno(data_t dataFloat) {
-    printf("El signo del numero es ");
+    printf("El signo del n%cmero es ", uACENTO);
 
     if (dataFloat.signo) printf("negativo");
     else printf("positivo");
