@@ -1,7 +1,7 @@
 // Printear partes del flotante y pedir que sea insertado
 
 #include <stdio.h>
-#include "../ascii/ascii.h"
+#include "../extra/ascii/ascii.h"
 
 #define signo format.sign
 #define exponente format.exp
