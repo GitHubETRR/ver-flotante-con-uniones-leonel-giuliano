@@ -19,9 +19,9 @@
 
 typedef union {
     struct {
-        unsigned int mant : 23;
-        unsigned int exp : 8;
         unsigned int sign : 1;
+        unsigned int exp : 8;
+        unsigned int mant : 23;
     }format;
     
     float varF;
